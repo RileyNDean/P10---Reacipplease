@@ -102,13 +102,12 @@
 			isa = PBXGroup;
 			children = (
 				533EC89B2796B0C400A0CAB6 /* AppDelegate.swift */,
-				533EC89D2796B0C400A0CAB6 /* SceneDelegate.swift */,
+				533EC8D92796D58800A0CAB6 /* Model */,
+				533EC8DA2796D58D00A0CAB6 /* Controller */,
+				533EC8D82796D58000A0CAB6 /* View */,
 				533EC89F2796B0C400A0CAB6 /* ViewController.swift */,
-				533EC8A12796B0C400A0CAB6 /* Main.storyboard */,
-				533EC8A72796B0C600A0CAB6 /* Assets.xcassets */,
 				533EC8A92796B0C600A0CAB6 /* LaunchScreen.storyboard */,
 				533EC8AC2796B0C600A0CAB6 /* Info.plist */,
-				533EC8A42796B0C400A0CAB6 /* Recipplease.xcdatamodeld */,
 			);
 			path = Recipplease;
 			sourceTree = "<group>";
@@ -128,6 +127,39 @@
 				533EC8C12796B0C600A0CAB6 /* RecippleaseUITestsLaunchTests.swift */,
 			);
 			path = RecippleaseUITests;
+			sourceTree = "<group>";
+		};
+		533EC8D82796D58000A0CAB6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				533EC8A12796B0C400A0CAB6 /* Main.storyboard */,
+				533EC89D2796B0C400A0CAB6 /* SceneDelegate.swift */,
+				533EC8A72796B0C600A0CAB6 /* Assets.xcassets */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		533EC8D92796D58800A0CAB6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				533EC8DB2796D6DB00A0CAB6 /* CoreData */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		533EC8DA2796D58D00A0CAB6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		533EC8DB2796D6DB00A0CAB6 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				533EC8A42796B0C400A0CAB6 /* Recipplease.xcdatamodeld */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
