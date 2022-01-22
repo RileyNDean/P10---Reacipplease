@@ -24,7 +24,7 @@ class ManageIngredient {
         delegate?.addingIngredientsDelegate(ingredients: ingredientString)
     }
     
-    func cleanIngredients () {
+    func cleanIngredients() {
         ingredients = ""
         Search.ingredients = ""
         delegate?.cleanIngredientsDelegate()

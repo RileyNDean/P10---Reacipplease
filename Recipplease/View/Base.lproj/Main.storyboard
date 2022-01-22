@@ -292,6 +292,7 @@
                                             <outlet property="recipeImage" destination="k6A-hJ-fS6" id="Gsk-Lz-QcP"/>
                                             <outlet property="recipeNameLabel" destination="6yI-ct-6Cv" id="d9N-jV-4ZZ"/>
                                             <outlet property="timeLabel" destination="4RH-GM-hSd" id="Ekv-xE-smj"/>
+                                            <segue destination="SCs-ut-n21" kind="show" identifier="GoToRecipe" id="ffq-qV-pCH"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -314,22 +315,21 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="recipesView" destination="6DV-zY-gbe" id="SrL-au-b5F"/>
-                        <segue destination="SCs-ut-n21" kind="show" id="iVA-jc-63Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C0p-e6-Dbw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2292" y="-377"/>
         </scene>
-        <!--View Controller-->
+        <!--Recipes Ingredients View Controller-->
         <scene sceneID="d3Y-aw-wPO">
             <objects>
-                <viewController id="SCs-ut-n21" sceneMemberID="viewController">
+                <viewController id="SCs-ut-n21" customClass="RecipesIngredientsViewController" customModule="Recipplease" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zpm-mm-yeY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1vl-nU-wzs">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1vl-nU-wzs">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="260.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="1vl-nU-wzs" secondAttribute="height" multiplier="390:271" id="Gss-Xb-YCa"/>
@@ -358,31 +358,77 @@
                                 <rect key="frame" x="263" y="20" width="25" height="27"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredients " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sl-iI-eFW">
+                                <rect key="frame" x="0.0" y="268.5" width="148.5" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="6sl-iI-eFW" secondAttribute="height" multiplier="223:45" id="JiO-Lo-Fyc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Lorem ipsum" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U3K-1j-mLv">
+                                <rect key="frame" x="0.0" y="306.5" width="375" height="160.5"/>
+                                <color key="backgroundColor" systemColor="systemGray2Color"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hXI-I7-eou">
+                                <rect key="frame" x="96" y="475" width="185" height="31"/>
+                                <color key="backgroundColor" red="0.32880461220000001" green="0.60382479430000002" blue="0.47145795820000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="hXI-I7-eou" secondAttribute="height" multiplier="185:31" id="8QO-XU-VGj"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Get directions">
+                                    <color key="baseForegroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="getDirections:" destination="SCs-ut-n21" eventType="touchUpInside" id="QNU-A7-8ow"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="DJb-3A-0p0"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGray2Color"/>
                         <constraints>
                             <constraint firstItem="DJb-3A-0p0" firstAttribute="trailing" secondItem="aYK-Qu-u7B" secondAttribute="trailing" constant="20" id="7JN-lQ-Vhz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hXI-I7-eou" secondAttribute="trailing" constant="78" id="9sy-C0-wZt"/>
                             <constraint firstItem="1vl-nU-wzs" firstAttribute="top" secondItem="DJb-3A-0p0" secondAttribute="top" id="Azw-HW-sAI"/>
                             <constraint firstItem="55f-hh-5I8" firstAttribute="top" secondItem="zpm-mm-yeY" secondAttribute="top" constant="20" symbolic="YES" id="BNL-LX-wc0"/>
                             <constraint firstItem="55f-hh-5I8" firstAttribute="width" secondItem="55f-hh-5I8" secondAttribute="height" multiplier="83:21" constant="-19.714285714285722" id="GUC-IH-ZNt"/>
                             <constraint firstItem="wGF-08-5mm" firstAttribute="leading" secondItem="DJb-3A-0p0" secondAttribute="leading" constant="263" id="Hry-se-f9U"/>
+                            <constraint firstItem="hXI-I7-eou" firstAttribute="top" secondItem="U3K-1j-mLv" secondAttribute="bottom" constant="8" id="IY3-31-7Ux"/>
                             <constraint firstItem="wGF-08-5mm" firstAttribute="bottom" secondItem="55f-hh-5I8" secondAttribute="bottom" id="MI8-MW-6vT"/>
                             <constraint firstItem="55f-hh-5I8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="DJb-3A-0p0" secondAttribute="leading" symbolic="YES" id="SLC-Yd-N3F"/>
+                            <constraint firstItem="U3K-1j-mLv" firstAttribute="trailing" secondItem="DJb-3A-0p0" secondAttribute="trailing" id="SjC-7G-2fl"/>
+                            <constraint firstItem="DJb-3A-0p0" firstAttribute="bottom" secondItem="U3K-1j-mLv" secondAttribute="bottom" constant="58" id="W0b-Wz-af4"/>
                             <constraint firstItem="55f-hh-5I8" firstAttribute="trailing" secondItem="zpm-mm-yeY" secondAttribute="trailingMargin" id="WKT-FS-Oje"/>
                             <constraint firstItem="wGF-08-5mm" firstAttribute="top" secondItem="55f-hh-5I8" secondAttribute="top" id="XqH-CW-eUJ"/>
                             <constraint firstItem="1vl-nU-wzs" firstAttribute="trailing" secondItem="DJb-3A-0p0" secondAttribute="trailing" id="d0c-cW-q8s"/>
+                            <constraint firstItem="6sl-iI-eFW" firstAttribute="top" secondItem="1vl-nU-wzs" secondAttribute="bottom" constant="8" id="lbd-JJ-J4O"/>
+                            <constraint firstItem="U3K-1j-mLv" firstAttribute="top" secondItem="6sl-iI-eFW" secondAttribute="bottom" constant="8" id="mzW-kD-7cD"/>
+                            <constraint firstItem="DJb-3A-0p0" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="6sl-iI-eFW" secondAttribute="trailing" symbolic="YES" id="n9g-Mc-ZMz"/>
                             <constraint firstItem="1vl-nU-wzs" firstAttribute="leading" secondItem="DJb-3A-0p0" secondAttribute="leading" id="nPZ-3R-y9B"/>
+                            <constraint firstItem="U3K-1j-mLv" firstAttribute="leading" secondItem="DJb-3A-0p0" secondAttribute="leading" id="nX8-7a-VGC"/>
                             <constraint firstItem="aYK-Qu-u7B" firstAttribute="bottom" secondItem="1vl-nU-wzs" secondAttribute="bottom" id="qIG-xp-zfu"/>
                             <constraint firstItem="aYK-Qu-u7B" firstAttribute="leading" secondItem="DJb-3A-0p0" secondAttribute="leading" constant="20" id="t6U-NA-pyA"/>
+                            <constraint firstItem="6sl-iI-eFW" firstAttribute="leading" secondItem="DJb-3A-0p0" secondAttribute="leading" id="uI2-eA-aR3"/>
+                            <constraint firstItem="hXI-I7-eou" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zpm-mm-yeY" secondAttribute="leadingMargin" id="vmC-HF-IuB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="QT8-qf-rf4"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="ingredientsLines" destination="U3K-1j-mLv" id="Tgr-wO-mOw"/>
+                        <outlet property="recipeImage" destination="1vl-nU-wzs" id="BO4-KM-LVh"/>
+                        <outlet property="recipeTime" destination="55f-hh-5I8" id="gzS-me-jrs"/>
+                        <outlet property="recipeTitle" destination="aYK-Qu-u7B" id="0ms-p2-AKx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="blg-Dz-vlq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2127" y="413"/>
+            <point key="canvasLocation" x="2680" y="303.55450236966823"/>
         </scene>
         <!--Recipplese-->
         <scene sceneID="sSt-To-xqr">
@@ -417,6 +463,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGroupedBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -33,6 +33,12 @@ class RecipesViewController: UIViewController, UITableViewDataSource {
         return cell
     }
     
-
- 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "GoToRecipe" {
+            print("test")
+            guard let indexPath = recipesView.indexPathForSelectedRow?.row else {return}
+            let desVC = segue.destination as! RecipesIngredientsViewController
+            desVC.recipeIndex = indexPath
+        }
+    }
 }

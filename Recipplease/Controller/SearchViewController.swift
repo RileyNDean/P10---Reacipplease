@@ -26,6 +26,7 @@ class SearchViewController: UIViewController {
         super.init(coder: coder)
         manageIngredients.delegate = self
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
