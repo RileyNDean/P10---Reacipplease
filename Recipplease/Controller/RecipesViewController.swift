@@ -20,7 +20,7 @@ class RecipesViewController: UIViewController, UITableViewDataSource {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return RecipeSearch.numberOfSections
+        return Recipes.numberOfSections
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -28,7 +28,7 @@ class RecipesViewController: UIViewController, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.configure(name: RecipeSearch.label[indexPath.row], time: RecipeSearch.totalTime[indexPath.row], image: RecipeSearch.image[indexPath.row], ingredients: RecipeSearch.ingredients[indexPath.row])
+        cell.configure(name: Recipes.label[indexPath.row], time: Recipes.totalTime[indexPath.row], image: Recipes.image[indexPath.row], ingredients: Recipes.ingredients[indexPath.row])
         
         return cell
     }

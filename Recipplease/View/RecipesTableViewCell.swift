@@ -27,15 +27,15 @@ class RecipesTableViewCell: UITableViewCell {
         recipeImage.layer.shadowOpacity = 2.0
     }
     
-    func configure(name: String, time: Double, image: UIImage, ingredients: String){
+    func configure(name: String, time: String, image: UIImage, ingredients: String){
         printTime(time: time)
         recipeNameLabel.text = name
         recipeImage.image = image
         ingredientsLabel.text = ingredients
     }
     
-    func printTime(time: Double) {
-        if time == 0.0 {
+    private func printTime(time: String) {
+        if time == "" {
             timeLabel.isHidden = true
             cookTimeImage.isHidden = true
         } else {
