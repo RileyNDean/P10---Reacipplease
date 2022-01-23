@@ -342,20 +342,8 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="55f-hh-5I8">
-                                <rect key="frame" x="272" y="20" width="87" height="27"/>
-                                <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="55f-hh-5I8" secondAttribute="height" multiplier="83:21" constant="-19.714285714285722" id="Sbf-Jr-CjV"/>
-                                    <constraint firstAttribute="height" constant="27" id="UoM-YG-N3V"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="87" id="yJy-g5-XtZ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="23"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" image="cookingTime" translatesAutoresizingMaskIntoConstraints="NO" id="wGF-08-5mm">
-                                <rect key="frame" x="263" y="20" width="25" height="27"/>
+                                <rect key="frame" x="257" y="203.5" width="24" height="27"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredients " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sl-iI-eFW">
@@ -388,22 +376,31 @@
                                     <action selector="getDirections:" destination="SCs-ut-n21" eventType="touchUpInside" id="QNU-A7-8ow"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="55f-hh-5I8">
+                                <rect key="frame" x="283" y="203.5" width="72" height="27"/>
+                                <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="UoM-YG-N3V"/>
+                                    <constraint firstAttribute="width" secondItem="55f-hh-5I8" secondAttribute="height" multiplier="8:3" id="arI-u2-zsw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="23"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="DJb-3A-0p0"/>
                         <color key="backgroundColor" systemColor="systemGray2Color"/>
                         <constraints>
                             <constraint firstItem="DJb-3A-0p0" firstAttribute="trailing" secondItem="aYK-Qu-u7B" secondAttribute="trailing" constant="20" id="7JN-lQ-Vhz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hXI-I7-eou" secondAttribute="trailing" constant="78" id="9sy-C0-wZt"/>
+                            <constraint firstItem="55f-hh-5I8" firstAttribute="leading" secondItem="wGF-08-5mm" secondAttribute="trailing" constant="2" id="AK8-UW-qCp"/>
                             <constraint firstItem="1vl-nU-wzs" firstAttribute="top" secondItem="DJb-3A-0p0" secondAttribute="top" id="Azw-HW-sAI"/>
-                            <constraint firstItem="55f-hh-5I8" firstAttribute="top" secondItem="zpm-mm-yeY" secondAttribute="top" constant="20" symbolic="YES" id="BNL-LX-wc0"/>
-                            <constraint firstItem="55f-hh-5I8" firstAttribute="width" secondItem="55f-hh-5I8" secondAttribute="height" multiplier="83:21" constant="-19.714285714285722" id="GUC-IH-ZNt"/>
-                            <constraint firstItem="wGF-08-5mm" firstAttribute="leading" secondItem="DJb-3A-0p0" secondAttribute="leading" constant="263" id="Hry-se-f9U"/>
+                            <constraint firstItem="aYK-Qu-u7B" firstAttribute="top" secondItem="55f-hh-5I8" secondAttribute="bottom" id="FNz-ML-cTX"/>
+                            <constraint firstItem="wGF-08-5mm" firstAttribute="leading" secondItem="DJb-3A-0p0" secondAttribute="leading" constant="257" id="Hry-se-f9U"/>
                             <constraint firstItem="hXI-I7-eou" firstAttribute="top" secondItem="U3K-1j-mLv" secondAttribute="bottom" constant="8" id="IY3-31-7Ux"/>
                             <constraint firstItem="wGF-08-5mm" firstAttribute="bottom" secondItem="55f-hh-5I8" secondAttribute="bottom" id="MI8-MW-6vT"/>
-                            <constraint firstItem="55f-hh-5I8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="DJb-3A-0p0" secondAttribute="leading" symbolic="YES" id="SLC-Yd-N3F"/>
                             <constraint firstItem="U3K-1j-mLv" firstAttribute="trailing" secondItem="DJb-3A-0p0" secondAttribute="trailing" id="SjC-7G-2fl"/>
                             <constraint firstItem="DJb-3A-0p0" firstAttribute="bottom" secondItem="U3K-1j-mLv" secondAttribute="bottom" constant="58" id="W0b-Wz-af4"/>
-                            <constraint firstItem="55f-hh-5I8" firstAttribute="trailing" secondItem="zpm-mm-yeY" secondAttribute="trailingMargin" id="WKT-FS-Oje"/>
                             <constraint firstItem="wGF-08-5mm" firstAttribute="top" secondItem="55f-hh-5I8" secondAttribute="top" id="XqH-CW-eUJ"/>
                             <constraint firstItem="1vl-nU-wzs" firstAttribute="trailing" secondItem="DJb-3A-0p0" secondAttribute="trailing" id="d0c-cW-q8s"/>
                             <constraint firstItem="6sl-iI-eFW" firstAttribute="top" secondItem="1vl-nU-wzs" secondAttribute="bottom" constant="8" id="lbd-JJ-J4O"/>
@@ -412,14 +409,25 @@
                             <constraint firstItem="1vl-nU-wzs" firstAttribute="leading" secondItem="DJb-3A-0p0" secondAttribute="leading" id="nPZ-3R-y9B"/>
                             <constraint firstItem="U3K-1j-mLv" firstAttribute="leading" secondItem="DJb-3A-0p0" secondAttribute="leading" id="nX8-7a-VGC"/>
                             <constraint firstItem="aYK-Qu-u7B" firstAttribute="bottom" secondItem="1vl-nU-wzs" secondAttribute="bottom" id="qIG-xp-zfu"/>
+                            <constraint firstItem="DJb-3A-0p0" firstAttribute="trailing" secondItem="55f-hh-5I8" secondAttribute="trailing" constant="20" id="rdx-RC-eFR"/>
                             <constraint firstItem="aYK-Qu-u7B" firstAttribute="leading" secondItem="DJb-3A-0p0" secondAttribute="leading" constant="20" id="t6U-NA-pyA"/>
                             <constraint firstItem="6sl-iI-eFW" firstAttribute="leading" secondItem="DJb-3A-0p0" secondAttribute="leading" id="uI2-eA-aR3"/>
                             <constraint firstItem="hXI-I7-eou" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zpm-mm-yeY" secondAttribute="leadingMargin" id="vmC-HF-IuB"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="QT8-qf-rf4"/>
+                    <navigationItem key="navigationItem" id="QT8-qf-rf4">
+                        <barButtonItem key="rightBarButtonItem" image="favorite" id="MX0-RT-Bck">
+                            <color key="tintColor" systemColor="systemBlueColor"/>
+                            <connections>
+                                <action selector="addFavorite:" destination="SCs-ut-n21" id="ojy-Bx-WJR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
                     <connections>
+                        <outlet property="addFavoriteButton" destination="MX0-RT-Bck" id="SHM-wW-4sP"/>
+                        <outlet property="cookIcon" destination="wGF-08-5mm" id="U8g-7f-qSY"/>
+                        <outlet property="directionsButton" destination="hXI-I7-eou" id="yhb-3u-CwU"/>
                         <outlet property="ingredientsLines" destination="U3K-1j-mLv" id="Tgr-wO-mOw"/>
                         <outlet property="recipeImage" destination="1vl-nU-wzs" id="BO4-KM-LVh"/>
                         <outlet property="recipeTime" destination="55f-hh-5I8" id="gzS-me-jrs"/>
@@ -428,7 +436,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="blg-Dz-vlq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2680" y="303.55450236966823"/>
+            <point key="canvasLocation" x="3134" y="-269"/>
         </scene>
         <!--Recipplese-->
         <scene sceneID="sSt-To-xqr">
@@ -453,6 +461,7 @@
     </scenes>
     <resources>
         <image name="cookingTime" width="25" height="25"/>
+        <image name="favorite" width="25" height="25"/>
         <image name="favoriteicon" width="25" height="25"/>
         <image name="searchicon" width="25" height="25"/>
         <systemColor name="labelColor">
@@ -463,6 +472,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

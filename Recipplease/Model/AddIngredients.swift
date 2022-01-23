@@ -12,7 +12,7 @@ protocol AddIngredientsDelegate: NSObject {
     func cleanIngredientsDelegate()
 }
 
-class ManageIngredient {
+final class ManageIngredient {
     
     weak var delegate: AddIngredientsDelegate?
     var ingredients = ""

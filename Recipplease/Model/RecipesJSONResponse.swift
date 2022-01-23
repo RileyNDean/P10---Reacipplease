@@ -19,7 +19,7 @@ extension SearchJSONStructure: Decodable {
 }
 
 struct Hits {
-    let recipe: Recipe?
+    let recipe: RecipesAllDetails?
 }
 
 extension Hits: Decodable {
@@ -28,7 +28,7 @@ extension Hits: Decodable {
     }
 }
 
-struct Recipe {
+struct RecipesAllDetails {
     let ingredientLines: [String?]
     let ingredients: [Ingredients?]
     let label: String?
@@ -37,7 +37,7 @@ struct Recipe {
     let url: String?
 }
 
-extension Recipe: Decodable {
+extension RecipesAllDetails: Decodable {
     enum CodingKeys: String, CodingKey {
         case ingredientLines = "ingredientLines"
         case ingredients = "ingredients"

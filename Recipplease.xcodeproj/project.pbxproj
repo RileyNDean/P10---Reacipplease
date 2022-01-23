@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5324DF7C279D909200961BC8 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5324DF7B279D909200961BC8 /* Favorite.swift */; };
+		5324DF7E279D90CD00961BC8 /* RecipesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5324DF7D279D90CD00961BC8 /* RecipesList.swift */; };
+		5324DF80279DA15F00961BC8 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5324DF7F279DA15F00961BC8 /* CoreDataStack.swift */; };
 		53250B1F279AB9B5006ADD60 /* Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53250B1E279AB9B5006ADD60 /* Recipes.swift */; };
 		53250B21279B1E86006ADD60 /* ErrorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53250B20279B1E86006ADD60 /* ErrorController.swift */; };
 		533EC89C2796B0C400A0CAB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533EC89B2796B0C400A0CAB6 /* AppDelegate.swift */; };
@@ -46,6 +49,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5324DF7B279D909200961BC8 /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
+		5324DF7D279D90CD00961BC8 /* RecipesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesList.swift; sourceTree = "<group>"; };
+		5324DF7F279DA15F00961BC8 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		53250B1E279AB9B5006ADD60 /* Recipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipes.swift; sourceTree = "<group>"; };
 		53250B20279B1E86006ADD60 /* ErrorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorController.swift; sourceTree = "<group>"; };
 		533EC8982796B0C400A0CAB6 /* Recipplease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Recipplease.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -185,6 +191,9 @@
 			isa = PBXGroup;
 			children = (
 				533EC8A42796B0C400A0CAB6 /* Recipplease.xcdatamodeld */,
+				5324DF7B279D909200961BC8 /* Favorite.swift */,
+				5324DF7D279D90CD00961BC8 /* RecipesList.swift */,
+				5324DF7F279DA15F00961BC8 /* CoreDataStack.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -321,10 +330,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				533EC8DD2796ECCC00A0CAB6 /* SearchViewController.swift in Sources */,
+				5324DF7C279D909200961BC8 /* Favorite.swift in Sources */,
+				5324DF7E279D90CD00961BC8 /* RecipesList.swift in Sources */,
 				538574CC2799BFF1006B8CF4 /* RecipesViewController.swift in Sources */,
 				53250B21279B1E86006ADD60 /* ErrorController.swift in Sources */,
 				5386949A279C5B170019E00D /* RecipesIngredientsViewController.swift in Sources */,
 				533EC8A62796B0C400A0CAB6 /* Recipplease.xcdatamodeld in Sources */,
+				5324DF80279DA15F00961BC8 /* CoreDataStack.swift in Sources */,
 				538574CE2799D0B3006B8CF4 /* RecipesTableViewCell.swift in Sources */,
 				5386949C279C62560019E00D /* RecipesIngredients.swift in Sources */,
 				533EC89C2796B0C400A0CAB6 /* AppDelegate.swift in Sources */,

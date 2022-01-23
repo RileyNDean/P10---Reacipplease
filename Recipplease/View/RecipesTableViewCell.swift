@@ -39,7 +39,7 @@ class RecipesTableViewCell: UITableViewCell {
             timeLabel.isHidden = true
             cookTimeImage.isHidden = true
         } else {
-            timeLabel.text = String(time)
+            timeLabel.text = time
         }
     }
 }

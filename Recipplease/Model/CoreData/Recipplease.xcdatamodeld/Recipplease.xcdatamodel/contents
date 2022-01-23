@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Favorite" representedClassName=".Favorite" syncable="YES" codeGenerationType="category">
+        <attribute name="isFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <relationship name="title" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="RecipesList" inverseName="isFavorite" inverseEntity="RecipesList"/>
+    </entity>
+    <entity name="RecipesList" representedClassName=".RecipesList" syncable="YES" codeGenerationType="category">
+        <attribute name="image" optional="YES" attributeType="Binary"/>
+        <attribute name="ingredients" optional="YES" attributeType="String"/>
+        <attribute name="time" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="String"/>
+        <relationship name="isFavorite" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Favorite" inverseName="title" inverseEntity="Favorite"/>
+    </entity>
+    <elements>
+        <element name="Favorite" positionX="-157.58203125" positionY="9.921875" width="128" height="73"/>
+        <element name="RecipesList" positionX="-370.84765625" positionY="7.9609375" width="128" height="133"/>
+    </elements>
 </model>

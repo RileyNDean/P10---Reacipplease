@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class Recipes {
+final class Recipes {
     static var ingredientsLines = [[String]]()
     static var ingredients = [String]()
     static var label = [String]()
@@ -51,11 +51,13 @@ class Recipes {
     private func minutesToHoursAndMinutes (_ minutes : Int) -> (String) {
         let time = (minutes / 60, (minutes % 60))
         let cookTime: String
-        if time.0 > 0  {
-            cookTime = "\(time.0)h \(time.1)m"
+        let hours = time.0
+        let minutes = time.1
+        if hours > 0  {
+            cookTime = "\(hours)h \(minutes)m"
         }
-        else if time.0 == 0 && time.1 > 0 {
-            cookTime = "\(time.1)m"
+        else if hours == 0 && minutes > 0 {
+            cookTime = "\(minutes)m"
         } else {
             cookTime = ""
         }
@@ -72,6 +74,7 @@ class Recipes {
         return ingredientString
     }
     
+    //TODO: demande si c'est ok ici
     private func getImage(_ imageURLString: String) -> UIImage {
         let imageURL = URL(string: imageURLString)
          let imageData = try! Data(contentsOf: imageURL!)
