@@ -7,6 +7,7 @@
     <entity name="RecipesList" representedClassName=".RecipesList" syncable="YES" codeGenerationType="category">
         <attribute name="image" optional="YES" attributeType="Binary"/>
         <attribute name="ingredients" optional="YES" attributeType="String"/>
+        <attribute name="ingredientsLines" optional="YES" attributeType="String"/>
         <attribute name="time" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="url" optional="YES" attributeType="String"/>
@@ -14,6 +15,6 @@
     </entity>
     <elements>
         <element name="Favorite" positionX="-157.58203125" positionY="9.921875" width="128" height="73"/>
-        <element name="RecipesList" positionX="-370.84765625" positionY="7.9609375" width="128" height="133"/>
+        <element name="RecipesList" positionX="-370.84765625" positionY="7.9609375" width="128" height="134"/>
     </elements>
 </model>
