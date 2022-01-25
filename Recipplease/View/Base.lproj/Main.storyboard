@@ -106,6 +106,7 @@ And it's good your recipe will be added!</string>
                                             <outlet property="recipeImage" destination="GWC-9f-Wyw" id="MeZ-Dg-Dat"/>
                                             <outlet property="recipeNameLabel" destination="mym-mm-9Mj" id="4Ku-0b-SpD"/>
                                             <outlet property="timeLabel" destination="QTl-OM-Pbt" id="MXu-TK-Jlf"/>
+                                            <segue destination="uOn-79-qEL" kind="show" identifier="FavoriteRecipes" id="vBh-AP-eCj"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -129,7 +130,6 @@ And it's good your recipe will be added!</string>
                     <navigationItem key="navigationItem" title="Recipplease - Favorite" id="Abo-bJ-nFr"/>
                     <connections>
                         <outlet property="favoriteTableView" destination="Arp-VJ-PjL" id="ntc-9A-TOS"/>
-                        <segue destination="uOn-79-qEL" kind="show" identifier="FavoriteRecipes" id="0hv-5V-cPe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XpA-hL-kDt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -341,7 +341,7 @@ And it's good your recipe will be added!</string>
         <!--Recipplease - Research-->
         <scene sceneID="QFM-pf-BTY">
             <objects>
-                <viewController id="ZTE-QY-0e5" customClass="RecipesViewController" customModule="Recipplease" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ZTE-QY-0e5" customClass="RecipesResearchListViewController" customModule="Recipplease" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tOx-cJ-E23">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -454,10 +454,10 @@ And it's good your recipe will be added!</string>
             </objects>
             <point key="canvasLocation" x="2101" y="-208"/>
         </scene>
-        <!--Recipes Ingredients View Controller-->
+        <!--Recipes Details View Controller-->
         <scene sceneID="d3Y-aw-wPO">
             <objects>
-                <viewController id="SCs-ut-n21" customClass="RecipesIngredientsViewController" customModule="Recipplease" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="SCs-ut-n21" customClass="RecipesDetailsViewController" customModule="Recipplease" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zpm-mm-yeY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -591,10 +591,10 @@ And it's good your recipe will be added!</string>
             </objects>
             <point key="canvasLocation" x="-549" y="251"/>
         </scene>
-        <!--View Controller-->
+        <!--Favorites Details View Controller-->
         <scene sceneID="nOj-PE-xdp">
             <objects>
-                <viewController id="uOn-79-qEL" sceneMemberID="viewController">
+                <viewController id="uOn-79-qEL" customClass="FavoritesDetailsViewController" customModule="Recipplease" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rdf-jQ-X62">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -642,6 +642,9 @@ And it's good your recipe will be added!</string>
                                 <buttonConfiguration key="configuration" style="plain" title="Get directions">
                                     <color key="baseForegroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="getDirection:" destination="uOn-79-qEL" eventType="touchUpInside" id="148-Bh-2DL"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIV-JD-r3Z">
                                 <rect key="frame" x="322" y="230.66666666666669" width="72" height="27"/>
@@ -685,9 +688,21 @@ And it's good your recipe will be added!</string>
                     <navigationItem key="navigationItem" id="3UH-vW-Vff">
                         <barButtonItem key="rightBarButtonItem" image="favorite" id="mp3-MC-qii">
                             <color key="tintColor" systemColor="systemYellowColor"/>
+                            <connections>
+                                <action selector="suppFavorite:" destination="uOn-79-qEL" id="5Xc-9H-Heo"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="cookIcon" destination="iLX-gV-Uk1" id="czA-UG-TMy"/>
+                        <outlet property="cookTime" destination="gIV-JD-r3Z" id="bLP-hS-7cI"/>
+                        <outlet property="directionsButton" destination="cfl-2I-e9H" id="JOq-9w-6qV"/>
+                        <outlet property="imageRecipe" destination="iXa-KY-9Wz" id="Dpx-Hb-nxG"/>
+                        <outlet property="ingredientsLines" destination="31C-lc-qRx" id="jjy-JA-yPy"/>
+                        <outlet property="isFavorite" destination="mp3-MC-qii" id="ZHj-8U-wSZ"/>
+                        <outlet property="recipeTitle" destination="nAi-Ey-KMn" id="fUu-6V-JzP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="05y-Ro-SfI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RecipesViewController: UIViewController, UITableViewDataSource {
+class RecipesResearchListViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var recipesView: UITableView!
     
@@ -37,7 +37,7 @@ class RecipesViewController: UIViewController, UITableViewDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "GoToRecipe" {
             guard let indexPath = recipesView.indexPathForSelectedRow?.row else {return}
-            let desVC = segue.destination as! RecipesIngredientsViewController
+            let desVC = segue.destination as! RecipesDetailsViewController
             desVC.recipeIndex = indexPath
         }
     }

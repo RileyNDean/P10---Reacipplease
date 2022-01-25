@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RecipesIngredientsViewController: UIViewController {
+class RecipesDetailsViewController: UIViewController {
 
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var recipeTitle: UILabel!
@@ -73,7 +73,7 @@ class RecipesIngredientsViewController: UIViewController {
     }
 }
 
-extension RecipesIngredientsViewController: RecipesDetails {
+extension RecipesDetailsViewController: RecipesDetails {
     func openDirectionsURL(directions: URL) {
             UIApplication.shared.open(URL(string: "\(directions)")!)
     }

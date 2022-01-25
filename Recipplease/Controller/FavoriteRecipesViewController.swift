@@ -42,10 +42,16 @@ class FavoriteRecipesViewController: UIViewController, UITableViewDataSource {
         }
         
         let recipe = recipesFavorite[indexPath.row]
-        print(recipe)
         cell.configure(name: recipe.title!, time: recipe.time!, image: recipe.image!, ingredients: recipe.ingredients!)
         
         return cell
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "FavoriteRecipes" {
+            guard let indexPath = favoriteTableView.indexPathForSelectedRow?.row else {return}
+            let desVC = segue.destination as! FavoritesDetailsViewController
+            desVC.recipesFavorite = recipesFavorite[indexPath]
+        }
+    }
 }
