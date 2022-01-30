@@ -17,20 +17,12 @@ class RecipesFavoriteTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        addShadow()
-    }
-
-    private func addShadow() {
-        recipeImage.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7).cgColor
-        recipeImage.layer.shadowRadius = 2.0
-        recipeImage.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
-        recipeImage.layer.shadowOpacity = 2.0
     }
     
-    func configure(name: String, time: String, image: Data, ingredients: String){
+    func configure(name: String, time: String, image: String, ingredients: String){
         printTime(time: time)
         recipeNameLabel.text = name
-        recipeImage.image = UIImage(data: image)
+        recipeImage.image = getImage(image)
         ingredientsLabel.text = ingredients
     }
     
@@ -42,4 +34,16 @@ class RecipesFavoriteTableViewCell: UITableViewCell {
             timeLabel.text = time
         }
     }
+
+    private func getImage(_ imageURLString: String) -> UIImage {
+        let imageURL = URL(string: imageURLString)
+         let imageData = try! Data(contentsOf: imageURL!)
+        if imageData.isEmpty {
+            return UIImage(named: "cookBaseImage")!
+        } else {
+        let image = UIImage(data: imageData)
+            return image!
+        }
+    }
+    
 }

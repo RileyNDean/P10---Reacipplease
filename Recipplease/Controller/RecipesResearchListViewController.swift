@@ -11,6 +11,8 @@ class RecipesResearchListViewController: UIViewController, UITableViewDataSource
     
     @IBOutlet weak var recipesView: UITableView!
     
+    var recipes: Recipes? = nil
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         recipesView.reloadData()
@@ -21,7 +23,7 @@ class RecipesResearchListViewController: UIViewController, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Recipes.numberOfSections
+        return recipes!.numberOfSections
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -29,7 +31,7 @@ class RecipesResearchListViewController: UIViewController, UITableViewDataSource
             return UITableViewCell()
         }
         
-        cell.configure(name: Recipes.label[indexPath.row], time: Recipes.totalTime[indexPath.row], image: Recipes.image[indexPath.row], ingredients: Recipes.ingredients[indexPath.row])
+        cell.configure(name: recipes!.label[indexPath.row], time: recipes!.totalTime[indexPath.row], image: recipes!.image[indexPath.row], ingredients: recipes!.ingredients[indexPath.row], serve: recipes!.yield[indexPath.row])
         
         return cell
     }
@@ -38,6 +40,8 @@ class RecipesResearchListViewController: UIViewController, UITableViewDataSource
         if segue.identifier == "GoToRecipe" {
             guard let indexPath = recipesView.indexPathForSelectedRow?.row else {return}
             let desVC = segue.destination as! RecipesDetailsViewController
+            desVC.whichSegue = true
+            desVC.recipesSearch = recipes
             desVC.recipeIndex = indexPath
         }
     }

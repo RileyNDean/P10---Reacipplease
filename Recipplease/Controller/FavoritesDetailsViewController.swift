@@ -61,9 +61,9 @@ class FavoritesDetailsViewController: UIViewController {
     }
 }
 
-extension FavoritesDetailsViewController: RecipesDetails {
-    func configureRecipeDetails(image: UIImage, title: String, time: String, ingredients: String) {
-        imageRecipe.image = image
+extension FavoritesDetailsViewController: RecipesDetailsDelegate {
+    func configureRecipeDetails(image: String, title: String, time: String, ingredients: String) {
+        //imageRecipe.image = image
         cookTime.text = time
         recipeTitle.text = title
         ingredientsLines.text = ingredients

@@ -16,6 +16,7 @@ class SearchViewController: UIViewController {
     
     let manageIngredients = ManageIngredient()
     let errorManage = ErrorController()
+    var recipes: Recipes? = nil
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -39,13 +40,15 @@ class SearchViewController: UIViewController {
     func getResearch() {
         toggleActivityIndicator(shown: true)
         
-        Search.shared.getResearch { success, research in
+        Search.shared.getResearch(for: manageIngredients.ingredients) { success, research in
             self.toggleActivityIndicator(shown: false)
             if success {
-                if Recipes.responseIsEmpty {
-                    self.errorManage.presentAlertData(controller: self)
-                } else {
+                if ((research?.responseIsEmpty) != nil) {
+                    
+                    self.recipes = research
                     self.performSegue(withIdentifier: "RecipesTable", sender: nil)
+                } else {
+                    self.errorManage.presentAlertData(controller: self)
                 }
             } else {
                 self.errorManage.presentAlertNetwork(controller: self)
@@ -67,10 +70,22 @@ class SearchViewController: UIViewController {
     }
     
     @IBAction func searchRecip(_ sender: UIButton) {
-        if Search.ingredientsListIsEmpty {
+        if manageIngredients.ingredients.isEmpty
+        {
             self.errorManage.presentAlertIngredientListEmpty(controller: self)
-        } else {
+        }
+        else
+        {
             getResearch()
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "RecipesTable" {
+            if let vc = segue.destination as? RecipesResearchListViewController
+            {
+                vc.recipes = self.recipes
+            }
         }
     }
 }
@@ -80,7 +95,7 @@ extension SearchViewController: AddIngredientsDelegate {
         ingredientsTextView.text = ""
     }
     
-    func addingIngredientsDelegate(ingredients: String) {
-        ingredientsTextView.text = ingredients
+    func addingIngredientsDelegate(ingredients: [String]) {
+        ingredientsTextView.text = ingredients.joined(separator: "\n")
     }
 }

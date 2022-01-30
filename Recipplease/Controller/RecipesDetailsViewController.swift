@@ -17,8 +17,11 @@ class RecipesDetailsViewController: UIViewController {
     @IBOutlet weak var directionsButton: UIButton!
     @IBOutlet weak var ingredientsLines: UITextView!
     
-    let recipeDetails = RecipeManageDetails()
-    var recipeIndex: Int?
+    let recipeDetails = RecipeDetails()
+    var whichSegue = Bool()
+    var recipesSearch: Recipes? = nil
+    var recipesFavorite: RecipesList?
+    var recipeIndex = Int()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -30,9 +33,11 @@ class RecipesDetailsViewController: UIViewController {
         recipeDetails.delegate = self
     }
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        recipeDetails.configureRecipeDetails(recipeIndex!)
+        recipeDetails.configureRecipeDetails(whichSegue: whichSegue, recipeIndex: recipeIndex, recipeSearch: recipesSearch, recipeFavorite: recipesFavorite)
         haveDirections()
         alreadyFavorite()
         cookTime()
@@ -46,6 +51,7 @@ class RecipesDetailsViewController: UIViewController {
         if recipeDetails.isAlreadyFavorite() {
             addFavoriteButton.tintColor = .systemBlue
             recipeDetails.remove()
+            navigationController?.popViewController(animated: true)
         } else {
             addFavoriteButton.tintColor = .yellow
             recipeDetails.addFavorite()
@@ -59,7 +65,7 @@ class RecipesDetailsViewController: UIViewController {
             cookIcon.isHidden = true
         }
     }
-    
+
     func alreadyFavorite() {
         if recipeDetails.isAlreadyFavorite() {
             addFavoriteButton.tintColor = .yellow
@@ -73,13 +79,14 @@ class RecipesDetailsViewController: UIViewController {
     }
 }
 
-extension RecipesDetailsViewController: RecipesDetails {
+extension RecipesDetailsViewController: RecipesDetailsDelegate {
+    
     func openDirectionsURL(directions: URL) {
             UIApplication.shared.open(URL(string: "\(directions)")!)
     }
     
-    func configureRecipeDetails(image: UIImage, title: String, time: String, ingredients: String) {
-        recipeImage.image = image
+    func configureRecipeDetails(image: String, title: String, time: String, ingredients: String) {
+        recipeImage.downloaded(from: image)
       recipeTime.text = time
         recipeTitle.text = title
        ingredientsLines.text = ingredients

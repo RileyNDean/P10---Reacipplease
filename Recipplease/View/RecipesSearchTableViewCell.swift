@@ -12,26 +12,31 @@ class RecipesTableViewCell: UITableViewCell {
     @IBOutlet weak var recipeNameLabel: UILabel!
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var ingredientsLabel: UILabel!
+    @IBOutlet weak var serveIcon: UIImageView!
+    @IBOutlet weak var serveLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var cookTimeImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        addShadow()
     }
 
-    private func addShadow() {
-        recipeImage.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7).cgColor
-        recipeImage.layer.shadowRadius = 2.0
-        recipeImage.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
-        recipeImage.layer.shadowOpacity = 2.0
-    }
-    
-    func configure(name: String, time: String, image: UIImage, ingredients: String){
+    func configure(name: String, time: String, image: String, ingredients: String, serve: String){
         printTime(time: time)
         recipeNameLabel.text = name
-        recipeImage.image = image
+        recipeImage.image = getImage(image)
         ingredientsLabel.text = ingredients
+        printServe(serve: serve)
+        
+    }
+    
+    private func printServe(serve: String) {
+        if serve == "0" {
+            serveIcon.isHidden = true
+            serveLabel.isHidden = true
+        } else {
+            serveLabel.text = serve
+        }
     }
     
     private func printTime(time: String) {
@@ -40,6 +45,17 @@ class RecipesTableViewCell: UITableViewCell {
             cookTimeImage.isHidden = true
         } else {
             timeLabel.text = time
+        }
+    }
+    
+    private func getImage(_ imageURLString: String) -> UIImage {
+        let imageURL = URL(string: imageURLString)
+         let imageData = try! Data(contentsOf: imageURL!)
+        if imageData.isEmpty {
+            return UIImage(named: "cookBaseImage")!
+        } else {
+        let image = UIImage(data: imageData)
+            return image!
         }
     }
 }

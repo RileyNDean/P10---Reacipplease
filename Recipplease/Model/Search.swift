@@ -8,11 +8,6 @@
 import Foundation
 
 final class Search {
-    static var ingredients = ""
-    
-    static var ingredientsListIsEmpty: Bool {
-        return ingredients == ""
-    }
     
     static var shared = Search()
     private init() {
@@ -29,9 +24,9 @@ final class Search {
 
 extension Search {
     
-    func getResearch(callback: @escaping (Bool, Recipes?) -> Void) {
+    func getResearch(for ingredients: [String], callback: @escaping (Bool, Recipes?) -> Void) {
         
-        let researchURL = searchURL()
+        let researchURL = searchURL(ingredients: ingredients)
         
         task?.cancel()
         task = searchSession.dataTask(with: researchURL) { (data, response, error) in
@@ -48,19 +43,18 @@ extension Search {
                     callback(false, nil)
                     return
                 }
-                let recipes = Recipes()
-                recipes.getRecipes(responseJSON)
+                let recipes = Recipes.from(responseJSON)
                 callback(true, recipes)
             }
         }
         task?.resume()
     }
     
-    private func searchURL() -> URL {
+    private func searchURL(ingredients: [String]) -> URL {
         let searchAPI = "https://api.edamam.com/api/recipes/v2?"
         let appKey = "f99138a06912b8af3245621c660d2149"
         let appID = "bdd0d7aa"
-        let q = Search.ingredients.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        let q = ingredients.joined(separator: " ").addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
         let type = "public"
         let searchURL = URL(string: searchAPI + "q=" + q + "&app_id=" + appID + "&app_key=" + appKey + "&type=" + type)
         return searchURL!

@@ -8,25 +8,22 @@
 import Foundation
 
 protocol AddIngredientsDelegate: NSObject {
-    func addingIngredientsDelegate(ingredients: String)
+    func addingIngredientsDelegate(ingredients: [String])
     func cleanIngredientsDelegate()
 }
 
 final class ManageIngredient {
     
     weak var delegate: AddIngredientsDelegate?
-    var ingredients = ""
+    var ingredients = [String]()
     
     func addingIngredient(_ ingredientText: String) {
-        let ingredientString = ingredients + ingredientText + "\n"
-        ingredients = ingredients + ingredientText + "\n"
-        Search.ingredients =  ingredientText + " " + Search.ingredients 
-        delegate?.addingIngredientsDelegate(ingredients: ingredientString)
+        ingredients.append(ingredientText)
+        delegate?.addingIngredientsDelegate(ingredients: ingredients)
     }
     
     func cleanIngredients() {
-        ingredients = ""
-        Search.ingredients = ""
+        ingredients = []
         delegate?.cleanIngredientsDelegate()
     }
 }

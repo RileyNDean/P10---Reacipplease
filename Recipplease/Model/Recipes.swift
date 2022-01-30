@@ -6,83 +6,76 @@
 //
 
 import Foundation
-import UIKit
 
 final class Recipes {
-    static var ingredientsLines = [[String]]()
-    static var ingredients = [String]()
-    static var label = [String]()
-    static var image = [UIImage]()
-    static var totalTime = [String]()
-    static var url = [String]()
-    static var numberOfSections = 0
+    let ingredientsLines: [[String]]
+    let ingredients: [String]
+    let label: [String]
+    let image: [String]
+    let totalTime: [String]
+    let url: [String]
+    let uri: [String]
+    let yield: [String]
+    let numberOfSections: Int
     
-    static var responseIsEmpty: Bool {
+    var responseIsEmpty: Bool {
         return numberOfSections == 0
     }
     
-    func getRecipes(_ recipesResearch: SearchJSONStructure!) {
-       resetAllArray()
-        for i in 0..<recipesResearch.hits.count {
-            Recipes.ingredientsLines.append(appendUnwrapIngredientsLing(recipesResearch.hits[i]!.recipe!.ingredientLines))
-            Recipes.ingredients.append(appendUnwrapIngredients((recipesResearch.hits[i]?.recipe!.ingredients)!))
-            Recipes.label.append(recipesResearch.hits[i]!.recipe!.label!)
-            Recipes.image.append(getImage(recipesResearch.hits[i]!.recipe!.image!))
-            Recipes.totalTime.append(minutesToHoursAndMinutes(recipesResearch.hits[i]!.recipe!.totalTime!))
-            Recipes.url.append(recipesResearch.hits[i]!.recipe!.url!)
-        }
-        Recipes.numberOfSections = recipesResearch.hits.count
+    private init(
+        ingredientsLines: [[String]],
+        ingredients: [String],
+        label: [String],
+        image: [String],
+        totalTime: [String],
+        url: [String],
+        uri: [String],
+        yield: [String],
+        numberOfSections: Int)
+    {
+        self.ingredientsLines = ingredientsLines
+        self.ingredients = ingredients
+        self.label = label
+        self.image = image
+        self.totalTime = totalTime
+        self.url = url
+        self.uri = uri
+        self.numberOfSections = numberOfSections
+        self.yield = yield
     }
     
-    private func resetAllArray() {
-        Recipes.ingredients.removeAll()
-        Recipes.label.removeAll()
-        Recipes.image.removeAll()
-        Recipes.totalTime.removeAll()
-        Recipes.ingredientsLines.removeAll()
-        Recipes.url.removeAll()
-    }
-    
-    private func appendUnwrapIngredientsLing(_ optionalIngredientsLines: [String?]) -> [String] {
-        let ingredientsLinesArray = optionalIngredientsLines.compactMap {$0}
-        return ingredientsLinesArray
-    }
-    
-    private func minutesToHoursAndMinutes (_ minutes : Int) -> (String) {
-        let time = (minutes / 60, (minutes % 60))
-        let cookTime: String
-        let hours = time.0
-        let minutes = time.1
-        if hours > 0  {
-            cookTime = "\(hours)h \(minutes)m"
+    static func from(_ responseJSON: SearchJSONStructure) -> Recipes
+    {
+        let configureRecipe = ConfigureRecipeDetails()
+        var ingredientsLines = [[String]]()
+        var ingredients = [String]()
+        var label = [String]()
+        var image = [String]()
+        var totalTime = [String]()
+        var url = [String]()
+        var uri = [String]()
+        var yield = [String]()
+        
+        for i in 0..<responseJSON.hits.count {
+            label.append((responseJSON.hits[i]?.recipe?.label)!)
+            ingredientsLines.append(responseJSON.hits[i]!.recipe!.ingredientLines.compactMap {$0})
+            totalTime.append(configureRecipe.minutesToHoursAndMinutes((responseJSON.hits[i]?.recipe?.totalTime)!))
+            url.append((responseJSON.hits[i]?.recipe?.url)!)
+            ingredients.append(configureRecipe.appendUnwrapIngredients((responseJSON.hits[i]?.recipe!.ingredients)!))
+            image.append((responseJSON.hits[i]?.recipe?.image)!)
+            uri.append((responseJSON.hits[i]?.recipe?.uri)!)
+            yield.append(configureRecipe.intToStringYield((responseJSON.hits[i]?.recipe?.yield)!))
         }
-        else if hours == 0 && minutes > 0 {
-            cookTime = "\(minutes)m"
-        } else {
-            cookTime = ""
-        }
-        return cookTime
-    }
-    
-    private func appendUnwrapIngredients(_ optionalIngredients: [Ingredients?]) -> String {
-        var ingredientsArray = [String]()
-        for i in 0..<optionalIngredients.count {
-            let ingredient = optionalIngredients[i]!.food!
-            ingredientsArray.append(ingredient)
-        }
-        let ingredientString = ingredientsArray.joined(separator: ", ")
-        return ingredientString
-    }
-    
-    //TODO: demande si c'est ok ici
-    private func getImage(_ imageURLString: String) -> UIImage {
-        let imageURL = URL(string: imageURLString)
-         let imageData = try! Data(contentsOf: imageURL!)
-        if imageData.isEmpty {
-            return UIImage(named: "cookBaseImage")!
-        } else {
-        let image = UIImage(data: imageData)
-            return image!
-        }
+        
+        return Recipes(ingredientsLines: ingredientsLines,
+                       ingredients: ingredients,
+                       label: label,
+                       image: image,
+                       totalTime: totalTime,
+                       url: url,
+                       uri: uri,
+                       yield: yield,
+                       numberOfSections: responseJSON.hits.count
+                       )
     }
 }

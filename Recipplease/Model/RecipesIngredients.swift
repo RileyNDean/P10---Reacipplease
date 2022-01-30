@@ -9,25 +9,27 @@ import Foundation
 import UIKit
 import CoreData
 
-protocol RecipesDetails: NSObject {
-    func configureRecipeDetails(image: UIImage, title: String, time: String, ingredients: String)
+protocol RecipesDetailsDelegate: NSObject {
+    func configureRecipeDetails(image: String, title: String, time: String, ingredients: String)
     func openDirectionsURL(directions: URL)
  
 }
 
-final class RecipeManageDetails {
+final class RecipeDetails {
     
-    var delegate: RecipesDetails?
-    private var directionsRecipes: String?
-    private var title: String?
-    private var image: UIImage?
-    private var time: String?
-    private var ingredientsLines: String?
-    private var ingredients: String?
-    
-    
-    var recette: [RecipesList] = []
-    
+    var delegate: RecipesDetailsDelegate?
+    private var directionsRecipes = String()
+    private var title = String()
+    private var image = String()
+    private var time = String()
+    private var ingredientsLines = String()
+    private var ingredients = String()
+    private var recipeIndex = Int()
+    private var whichSegue = Bool()
+    private var recipe: RecipesList?
+    private var uri = String()
+    private var yield = String()
+
     private let coreDataStack: CoreDataStack
     
     init(coreDataStack: CoreDataStack = CoreDataStack.sharedInstance) {
@@ -40,15 +42,28 @@ final class RecipeManageDetails {
 }
 
 //setup the view with the informations
-extension RecipeManageDetails {
-    func configureRecipeDetails(_ indexRecipes: Int) {
-         title = Recipes.label[indexRecipes]
-         image = Recipes.image[indexRecipes]
-         time = Recipes.totalTime[indexRecipes]
-         ingredientsLines = ingredientsList(Recipes.ingredientsLines[indexRecipes])
-        directionsRecipes = Recipes.url[indexRecipes]
-        ingredients = Recipes.ingredients[indexRecipes]
-        delegate?.configureRecipeDetails(image: image!, title: title!, time: time!, ingredients: ingredientsLines!)
+extension RecipeDetails {
+    func configureRecipeDetails(whichSegue: Bool,recipeIndex: Int, recipeSearch: Recipes?, recipeFavorite: RecipesList?) {
+        print(whichSegue)
+        if whichSegue {
+            directionsRecipes = (recipeSearch?.url[recipeIndex])!
+            ingredients = (recipeSearch?.ingredients[recipeIndex])!
+            image = (recipeSearch?.image[recipeIndex])!
+            title = (recipeSearch?.label[recipeIndex])!
+            time = (recipeSearch?.totalTime[recipeIndex])!
+            uri = (recipeSearch?.uri[recipeIndex])!
+            yield = (recipeSearch?.yield[recipeIndex])!
+            ingredientsLines = ingredientsList((recipeSearch?.ingredientsLines[recipeIndex])!)
+            delegate?.configureRecipeDetails(image: (recipeSearch?.image[recipeIndex])!, title: (recipeSearch?.label[recipeIndex])!, time: (recipeSearch?.totalTime[recipeIndex])!, ingredients: ingredientsList((recipeSearch?.ingredientsLines[recipeIndex])!))
+        } else {
+            self.recipe = recipeFavorite
+            directionsRecipes = (recipe?.urlRecipe)!
+            uri = (recipe?.uriRecipe)!
+            delegate?.configureRecipeDetails(image: recipe!.image!, title: recipe!.title!, time: recipe!.time!, ingredients: recipe!.ingredientsLines!)
+            
+        }
+        self.whichSegue = whichSegue
+        self.recipeIndex = recipeIndex
     }
     
     private func ingredientsList(_ ingredients: [String]) -> String {
@@ -60,22 +75,24 @@ extension RecipeManageDetails {
     }
     
     func openDirectionsURL() {
-        guard let url = URL(string: directionsRecipes!) else {return}
+        guard let url = URL(string: directionsRecipes) else {return}
         delegate?.openDirectionsURL(directions: url)
     }
 }
 
-// favorite manage
-extension RecipeManageDetails {
+// favorite ee
+extension RecipeDetails {
     func addFavorite() {
         let recipe = RecipesList(context: coreDataStack.viewContext)
         let favorite = Favorite(context: coreDataStack.viewContext)
         recipe.ingredientsLines = ingredientsLines
         recipe.time = time
-        recipe.url = directionsRecipes
+        recipe.urlRecipe = directionsRecipes
         recipe.title = title
         recipe.ingredients = ingredients
-        recipe.image = image?.jpegData(compressionQuality: 1.0)
+        recipe.image = image
+        recipe.yield = yield
+        recipe.uriRecipe = uri
         favorite.isFavorite = true
         recipe.isFavorite = favorite
         do {
@@ -87,7 +104,7 @@ extension RecipeManageDetails {
     
     func remove() {
         let ingredientsRequest: NSFetchRequest<RecipesList> = RecipesList.fetchRequest()
-        ingredientsRequest.predicate = NSPredicate(format: "\(#keyPath(RecipesList.ingredientsLines)) == %@", ingredientsLines!)
+        ingredientsRequest.predicate = NSPredicate(format: "\(#keyPath(RecipesList.uriRecipe)) == %@", uri)
         if let recipe = try? coreDataStack.viewContext.fetch(ingredientsRequest) {
             for object in recipe {
                 coreDataStack.viewContext.delete(object)
@@ -102,7 +119,7 @@ extension RecipeManageDetails {
     
     func isAlreadyFavorite() -> Bool {
         let ingredientsRequest: NSFetchRequest<RecipesList> = RecipesList.fetchRequest()
-        ingredientsRequest.predicate = NSPredicate(format: "\(#keyPath(RecipesList.ingredientsLines)) == %@", ingredientsLines!)
+        ingredientsRequest.predicate = NSPredicate(format: "\(#keyPath(RecipesList.uriRecipe)) == %@", uri)
         do {
         let ingredients = try coreDataStack.viewContext.fetch(ingredientsRequest)
             if  ingredients.count == 0 {

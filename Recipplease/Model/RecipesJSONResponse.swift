@@ -31,6 +31,8 @@ extension Hits: Decodable {
 struct RecipesAllDetails {
     let ingredientLines: [String?]
     let ingredients: [Ingredients?]
+    let uri: String?
+    let yield: Int?
     let label: String?
     let image: String?
     let totalTime: Int?
@@ -41,10 +43,12 @@ extension RecipesAllDetails: Decodable {
     enum CodingKeys: String, CodingKey {
         case ingredientLines = "ingredientLines"
         case ingredients = "ingredients"
+        case yield = "yield"
         case label = "label"
         case image = "image"
         case totalTime = "totalTime"
         case url = "url"
+        case uri = "uri"
     }
 }
 

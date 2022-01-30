@@ -11,9 +11,13 @@ import CoreData
 class FavoriteRecipesViewController: UIViewController, UITableViewDataSource {
 
     @IBOutlet weak var favoriteTableView: UITableView!
+    @IBOutlet weak var instructionText: UITextView!
+    @IBOutlet weak var tableFavorite: UITableView!
     
     private let favoriteRepository = FavoriteRecipes()
     private var recipesFavorite: [RecipesList] = []
+    
+   
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -24,7 +28,12 @@ class FavoriteRecipesViewController: UIViewController, UITableViewDataSource {
     private func getRecipes() {
         favoriteRepository.getRecipes { [weak self] recipes in
             self?.recipesFavorite = recipes
-            self?.favoriteTableView.reloadData()
+            if recipes.count != 0 {
+                self?.tableFavorite.isHidden = false
+                self?.favoriteTableView.reloadData()
+            } else {
+                self?.tableFavorite.isHidden = true
+            }
         }
     }
     
@@ -50,8 +59,10 @@ class FavoriteRecipesViewController: UIViewController, UITableViewDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "FavoriteRecipes" {
             guard let indexPath = favoriteTableView.indexPathForSelectedRow?.row else {return}
-            let desVC = segue.destination as! FavoritesDetailsViewController
-            desVC.recipesFavorite = recipesFavorite[indexPath]
+            let desVC = segue.destination as! RecipesDetailsViewController
+            desVC.whichSegue = false
+            desVC.recipeIndex = indexPath
+            desVC.recipesFavorite = self.recipesFavorite[indexPath]
         }
     }
 }
