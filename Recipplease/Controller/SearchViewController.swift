@@ -40,11 +40,10 @@ class SearchViewController: UIViewController {
     func getResearch() {
         toggleActivityIndicator(shown: true)
         
-        Search.shared.getResearch(for: manageIngredients.ingredients) { success, research in
+        Search.shared.getRecipesResearch(for: manageIngredients.ingredients) { success, research in
             self.toggleActivityIndicator(shown: false)
             if success {
-                if ((research?.responseIsEmpty) != nil) {
-                    
+                if !research!.responseIsEmpty {
                     self.recipes = research
                     self.performSegue(withIdentifier: "RecipesTable", sender: nil)
                 } else {

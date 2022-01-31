@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 protocol RecipesDetailsDelegate: NSObject {
-    func configureRecipeDetails(image: String, title: String, time: String, ingredients: String)
+    func configureRecipeDetails(image: String, title: String, time: String, ingredients: String, serve: String)
     func openDirectionsURL(directions: URL)
  
 }
@@ -54,12 +54,12 @@ extension RecipeDetails {
             uri = (recipeSearch?.uri[recipeIndex])!
             yield = (recipeSearch?.yield[recipeIndex])!
             ingredientsLines = ingredientsList((recipeSearch?.ingredientsLines[recipeIndex])!)
-            delegate?.configureRecipeDetails(image: (recipeSearch?.image[recipeIndex])!, title: (recipeSearch?.label[recipeIndex])!, time: (recipeSearch?.totalTime[recipeIndex])!, ingredients: ingredientsList((recipeSearch?.ingredientsLines[recipeIndex])!))
+            delegate?.configureRecipeDetails(image: (recipeSearch?.image[recipeIndex])!, title: (recipeSearch?.label[recipeIndex])!, time: (recipeSearch?.totalTime[recipeIndex])!, ingredients: ingredientsList((recipeSearch?.ingredientsLines[recipeIndex])!), serve: (recipeSearch?.yield[recipeIndex])!)
         } else {
             self.recipe = recipeFavorite
             directionsRecipes = (recipe?.urlRecipe)!
             uri = (recipe?.uriRecipe)!
-            delegate?.configureRecipeDetails(image: recipe!.image!, title: recipe!.title!, time: recipe!.time!, ingredients: recipe!.ingredientsLines!)
+            delegate?.configureRecipeDetails(image: recipe!.image!, title: recipe!.title!, time: recipe!.time!, ingredients: recipe!.ingredientsLines!, serve: recipe!.yield!)
             
         }
         self.whichSegue = whichSegue

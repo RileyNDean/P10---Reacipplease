@@ -14,10 +14,7 @@
 		53250B21279B1E86006ADD60 /* ErrorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53250B20279B1E86006ADD60 /* ErrorController.swift */; };
 		533EC89C2796B0C400A0CAB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533EC89B2796B0C400A0CAB6 /* AppDelegate.swift */; };
 		533EC89E2796B0C400A0CAB6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533EC89D2796B0C400A0CAB6 /* SceneDelegate.swift */; };
-		533EC8A32796B0C400A0CAB6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 533EC8A12796B0C400A0CAB6 /* Main.storyboard */; };
 		533EC8A62796B0C400A0CAB6 /* Recipplease.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 533EC8A42796B0C400A0CAB6 /* Recipplease.xcdatamodeld */; };
-		533EC8A82796B0C600A0CAB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 533EC8A72796B0C600A0CAB6 /* Assets.xcassets */; };
-		533EC8AB2796B0C600A0CAB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 533EC8A92796B0C600A0CAB6 /* LaunchScreen.storyboard */; };
 		533EC8B62796B0C600A0CAB6 /* RecippleaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533EC8B52796B0C600A0CAB6 /* RecippleaseTests.swift */; };
 		533EC8C02796B0C600A0CAB6 /* RecippleaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533EC8BF2796B0C600A0CAB6 /* RecippleaseUITests.swift */; };
 		533EC8C22796B0C600A0CAB6 /* RecippleaseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533EC8C12796B0C600A0CAB6 /* RecippleaseUITestsLaunchTests.swift */; };
@@ -25,9 +22,13 @@
 		53558B6F279EEA06005CB587 /* RecipesFavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53558B6E279EEA06005CB587 /* RecipesFavoriteTableViewCell.swift */; };
 		53558B71279EEDAA005CB587 /* FavoriteRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53558B70279EEDAA005CB587 /* FavoriteRecipesViewController.swift */; };
 		53558B73279EF205005CB587 /* FavoriteRecipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53558B72279EF205005CB587 /* FavoriteRecipes.swift */; };
-		53558B75279F18E8005CB587 /* FavoritesDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53558B74279F18E7005CB587 /* FavoritesDetailsViewController.swift */; };
 		5362285E27A6D5530042013C /* UIImageView +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5362285D27A6D5530042013C /* UIImageView +.swift */; };
 		5362286027A6E48C0042013C /* ConfigureRecipeDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5362285F27A6E48C0042013C /* ConfigureRecipeDetails.swift */; };
+		5362289A27A84EDD0042013C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5362286F27A83EEF0042013C /* Alamofire.framework */; };
+		5362289B27A84EDD0042013C /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5362286F27A83EEF0042013C /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5362289C27A850440042013C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 533EC8A12796B0C400A0CAB6 /* Main.storyboard */; };
+		5362289D27A8504E0042013C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 533EC8A92796B0C600A0CAB6 /* LaunchScreen.storyboard */; };
+		5362289E27A850520042013C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 533EC8A72796B0C600A0CAB6 /* Assets.xcassets */; };
 		538574C8279814EC006B8CF4 /* RecipesJSONResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538574C7279814EB006B8CF4 /* RecipesJSONResponse.swift */; };
 		538574CA279825D3006B8CF4 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538574C9279825D3006B8CF4 /* Search.swift */; };
 		538574CC2799BFF1006B8CF4 /* RecipesResearchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538574CB2799BFF1006B8CF4 /* RecipesResearchListViewController.swift */; };
@@ -52,7 +53,77 @@
 			remoteGlobalIDString = 533EC8972796B0C400A0CAB6;
 			remoteInfo = Recipplease;
 		};
+		5362286E27A83EEF0042013C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5362286327A83EED0042013C /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3319A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS";
+		};
+		5362287027A83EEF0042013C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5362286327A83EED0042013C /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3E19A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS Tests";
+		};
+		5362287227A83EEF0042013C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5362286327A83EED0042013C /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4DD67C0B1A5C55C900ED2280;
+			remoteInfo = "Alamofire macOS";
+		};
+		5362287427A83EEF0042013C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5362286327A83EED0042013C /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F829C6B21A7A94F100A2CD59;
+			remoteInfo = "Alamofire macOS Tests";
+		};
+		5362287627A83EEF0042013C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5362286327A83EED0042013C /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4CF626EF1BA7CB3E0011A099;
+			remoteInfo = "Alamofire tvOS";
+		};
+		5362287827A83EEF0042013C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5362286327A83EED0042013C /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4CF626F81BA7CB3E0011A099;
+			remoteInfo = "Alamofire tvOS Tests";
+		};
+		5362287A27A83EEF0042013C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5362286327A83EED0042013C /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E4202FE01B667AA100C997FB;
+			remoteInfo = "Alamofire watchOS";
+		};
+		5362287C27A83EEF0042013C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5362286327A83EED0042013C /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 31293065263E17D600473CEA;
+			remoteInfo = "Alamofire watchOS Tests";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5362288127A840A70042013C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5362289B27A84EDD0042013C /* Alamofire.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		5324DF7B279D909200961BC8 /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
@@ -77,9 +148,9 @@
 		53558B6E279EEA06005CB587 /* RecipesFavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesFavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		53558B70279EEDAA005CB587 /* FavoriteRecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRecipesViewController.swift; sourceTree = "<group>"; };
 		53558B72279EF205005CB587 /* FavoriteRecipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRecipes.swift; sourceTree = "<group>"; };
-		53558B74279F18E7005CB587 /* FavoritesDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesDetailsViewController.swift; sourceTree = "<group>"; };
 		5362285D27A6D5530042013C /* UIImageView +.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView +.swift"; sourceTree = "<group>"; };
 		5362285F27A6E48C0042013C /* ConfigureRecipeDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureRecipeDetails.swift; sourceTree = "<group>"; };
+		5362286327A83EED0042013C /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = SOURCE_ROOT; };
 		538574C7279814EB006B8CF4 /* RecipesJSONResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesJSONResponse.swift; sourceTree = "<group>"; };
 		538574C9279825D3006B8CF4 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		538574CB2799BFF1006B8CF4 /* RecipesResearchListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesResearchListViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +165,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5362289A27A84EDD0042013C /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +193,7 @@
 				533EC8B42796B0C600A0CAB6 /* RecippleaseTests */,
 				533EC8BE2796B0C600A0CAB6 /* RecippleaseUITests */,
 				533EC8992796B0C400A0CAB6 /* Products */,
+				5362287E27A8408D0042013C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -142,6 +215,7 @@
 				533EC8DA2796D58D00A0CAB6 /* Controller */,
 				533EC8D82796D58000A0CAB6 /* View */,
 				533EC8AC2796B0C600A0CAB6 /* Info.plist */,
+				5362286327A83EED0042013C /* Alamofire.xcodeproj */,
 			);
 			path = Recipplease;
 			sourceTree = "<group>";
@@ -199,7 +273,6 @@
 				538574CB2799BFF1006B8CF4 /* RecipesResearchListViewController.swift */,
 				53869499279C5B170019E00D /* RecipesDetailsViewController.swift */,
 				53558B70279EEDAA005CB587 /* FavoriteRecipesViewController.swift */,
-				53558B74279F18E7005CB587 /* FavoritesDetailsViewController.swift */,
 				53250B20279B1E86006ADD60 /* ErrorController.swift */,
 			);
 			path = Controller;
@@ -216,6 +289,28 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		5362286427A83EED0042013C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5362286F27A83EEF0042013C /* Alamofire.framework */,
+				5362287127A83EEF0042013C /* Alamofire iOS Tests.xctest */,
+				5362287327A83EEF0042013C /* Alamofire.framework */,
+				5362287527A83EEF0042013C /* Alamofire macOS Tests.xctest */,
+				5362287727A83EEF0042013C /* Alamofire.framework */,
+				5362287927A83EEF0042013C /* Alamofire tvOS Tests.xctest */,
+				5362287B27A83EEF0042013C /* Alamofire.framework */,
+				5362287D27A83EEF0042013C /* Alamofire watchOS Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5362287E27A8408D0042013C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -226,6 +321,7 @@
 				533EC8942796B0C400A0CAB6 /* Sources */,
 				533EC8952796B0C400A0CAB6 /* Frameworks */,
 				533EC8962796B0C400A0CAB6 /* Resources */,
+				5362288127A840A70042013C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -306,6 +402,12 @@
 			mainGroup = 533EC88F2796B0C400A0CAB6;
 			productRefGroup = 533EC8992796B0C400A0CAB6 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 5362286427A83EED0042013C /* Products */;
+					ProjectRef = 5362286327A83EED0042013C /* Alamofire.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				533EC8972796B0C400A0CAB6 /* Recipplease */,
@@ -315,14 +417,73 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		5362286F27A83EEF0042013C /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 5362286E27A83EEF0042013C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5362287127A83EEF0042013C /* Alamofire iOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Alamofire iOS Tests.xctest";
+			remoteRef = 5362287027A83EEF0042013C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5362287327A83EEF0042013C /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 5362287227A83EEF0042013C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5362287527A83EEF0042013C /* Alamofire macOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Alamofire macOS Tests.xctest";
+			remoteRef = 5362287427A83EEF0042013C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5362287727A83EEF0042013C /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 5362287627A83EEF0042013C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5362287927A83EEF0042013C /* Alamofire tvOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Alamofire tvOS Tests.xctest";
+			remoteRef = 5362287827A83EEF0042013C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5362287B27A83EEF0042013C /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 5362287A27A83EEF0042013C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5362287D27A83EEF0042013C /* Alamofire watchOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Alamofire watchOS Tests.xctest";
+			remoteRef = 5362287C27A83EEF0042013C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		533EC8962796B0C400A0CAB6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				533EC8AB2796B0C600A0CAB6 /* LaunchScreen.storyboard in Resources */,
-				533EC8A82796B0C600A0CAB6 /* Assets.xcassets in Resources */,
-				533EC8A32796B0C400A0CAB6 /* Main.storyboard in Resources */,
+				5362289C27A850440042013C /* Main.storyboard in Resources */,
+				5362289E27A850520042013C /* Assets.xcassets in Resources */,
+				5362289D27A8504E0042013C /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,7 +511,6 @@
 				53558B71279EEDAA005CB587 /* FavoriteRecipesViewController.swift in Sources */,
 				533EC8DD2796ECCC00A0CAB6 /* SearchViewController.swift in Sources */,
 				5324DF7C279D909200961BC8 /* Favorite.swift in Sources */,
-				53558B75279F18E8005CB587 /* FavoritesDetailsViewController.swift in Sources */,
 				5324DF7E279D90CD00961BC8 /* RecipesList.swift in Sources */,
 				538574CC2799BFF1006B8CF4 /* RecipesResearchListViewController.swift in Sources */,
 				53250B21279B1E86006ADD60 /* ErrorController.swift in Sources */,
@@ -551,7 +711,7 @@
 				INFOPLIST_FILE = Recipplease/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -563,7 +723,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -578,7 +738,7 @@
 				INFOPLIST_FILE = Recipplease/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -590,7 +750,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

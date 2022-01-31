@@ -15,6 +15,8 @@ class RecipesDetailsViewController: UIViewController {
     @IBOutlet weak var recipeTime: UILabel!
     @IBOutlet weak var addFavoriteButton: UIBarButtonItem!
     @IBOutlet weak var directionsButton: UIButton!
+    @IBOutlet weak var serveIcon: UIImageView!
+    @IBOutlet weak var serveLabel: UILabel!
     @IBOutlet weak var ingredientsLines: UITextView!
     
     let recipeDetails = RecipeDetails()
@@ -41,6 +43,7 @@ class RecipesDetailsViewController: UIViewController {
         haveDirections()
         alreadyFavorite()
         cookTime()
+        haveServe()
     }
 
     @IBAction func getDirections(_ sender: Any) {
@@ -57,6 +60,13 @@ class RecipesDetailsViewController: UIViewController {
             recipeDetails.addFavorite()
         }
         
+    }
+    
+    func haveServe() {
+        if serveLabel.text == "0" {
+            serveLabel.isHidden = true
+            serveIcon.isHidden = true
+        }
     }
     
     func cookTime() {
@@ -85,10 +95,11 @@ extension RecipesDetailsViewController: RecipesDetailsDelegate {
             UIApplication.shared.open(URL(string: "\(directions)")!)
     }
     
-    func configureRecipeDetails(image: String, title: String, time: String, ingredients: String) {
+    func configureRecipeDetails(image: String, title: String, time: String, ingredients: String, serve: String) {
         recipeImage.downloaded(from: image)
       recipeTime.text = time
         recipeTitle.text = title
        ingredientsLines.text = ingredients
+        serveLabel.text = serve
     }
 }

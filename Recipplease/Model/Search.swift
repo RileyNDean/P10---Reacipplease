@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 final class Search {
     
@@ -24,30 +25,26 @@ final class Search {
 
 extension Search {
     
-    func getResearch(for ingredients: [String], callback: @escaping (Bool, Recipes?) -> Void) {
+    func getRecipesResearch(for ingredients: [String], callback: @escaping (Bool, Recipes?) -> Void) {
         
         let researchURL = searchURL(ingredients: ingredients)
         
-        task?.cancel()
-        task = searchSession.dataTask(with: researchURL) { (data, response, error) in
-            DispatchQueue.main.async {
-                guard let data = data, error == nil else {
-                    callback(false, nil)
-                    return
-                }
-                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                    callback(false, nil)
-                    return
-                }
-                guard let responseJSON = try? JSONDecoder().decode(SearchJSONStructure.self, from: data) else {
-                    callback(false, nil)
-                    return
-                }
-                let recipes = Recipes.from(responseJSON)
-                callback(true, recipes)
+        DispatchQueue.main.async {
+            AF.request(researchURL, method: .get).responseDecodable(of: SearchJSONStructure.self) { (response) in
+                if response.error != nil  {
+                      callback(false, nil)
+                    print(response.error)
+                      return
+                  }
+                  guard let responseJSON = response.value else {
+                      callback(false, nil)
+                      print(response.value)
+                      return
+                  }
+                  let recipes = Recipes.from(responseJSON)
+                  callback(true, recipes)
             }
         }
-        task?.resume()
     }
     
     private func searchURL(ingredients: [String]) -> URL {
@@ -61,3 +58,19 @@ extension Search {
     }
 }
 
+/*
+ AF.request(researchURL, method: .get).responseDecodable(of: SearchJSONStructure.self) { (response) in
+     if response.error == nil  {
+           callback(false, nil)
+         print(response.error)
+           return
+       }
+       guard let responseJSON = response.value else {
+           callback(false, nil)
+           print(response.value)
+           return
+       }
+       let recipes = Recipes.from(responseJSON)
+       callback(true, recipes)
+ }
+ */

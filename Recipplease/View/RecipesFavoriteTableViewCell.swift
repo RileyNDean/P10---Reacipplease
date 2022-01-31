@@ -13,17 +13,29 @@ class RecipesFavoriteTableViewCell: UITableViewCell {
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var cookTimeImage: UIImageView!
+    @IBOutlet weak var serveIcon: UIImageView!
+    @IBOutlet weak var serveLabel: UILabel!
     @IBOutlet weak var ingredientsLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
-    func configure(name: String, time: String, image: String, ingredients: String){
+    func configure(name: String, time: String, image: String, ingredients: String, serve: String){
         printTime(time: time)
         recipeNameLabel.text = name
         recipeImage.image = getImage(image)
         ingredientsLabel.text = ingredients
+        printServe(serve: serve)
+    }
+    
+    private func printServe(serve: String) {
+        if serve == "0" {
+            serveIcon.isHidden = true
+            serveLabel.isHidden = true
+        } else {
+            serveLabel.text = serve
+        }
     }
     
     private func printTime(time: String) {

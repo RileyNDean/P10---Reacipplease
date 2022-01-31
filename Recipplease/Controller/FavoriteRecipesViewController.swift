@@ -51,7 +51,7 @@ class FavoriteRecipesViewController: UIViewController, UITableViewDataSource {
         }
         
         let recipe = recipesFavorite[indexPath.row]
-        cell.configure(name: recipe.title!, time: recipe.time!, image: recipe.image!, ingredients: recipe.ingredients!)
+         cell.configure(name: recipe.title!, time: recipe.time!, image: recipe.image!, ingredients: recipe.ingredients!, serve: recipe.yield!)
         
         return cell
     }
