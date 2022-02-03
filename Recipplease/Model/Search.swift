@@ -33,15 +33,14 @@ extension Search {
             AF.request(researchURL, method: .get).responseDecodable(of: SearchJSONStructure.self) { (response) in
                 if response.error != nil  {
                       callback(false, nil)
-                    print(response.error)
                       return
                   }
                   guard let responseJSON = response.value else {
                       callback(false, nil)
-                      print(response.value)
                       return
                   }
-                  let recipes = Recipes.from(responseJSON)
+                let recipes = Recipes()
+                recipes.createRecipesArray(responseJSON)
                   callback(true, recipes)
             }
         }
@@ -57,20 +56,3 @@ extension Search {
         return searchURL!
     }
 }
-
-/*
- AF.request(researchURL, method: .get).responseDecodable(of: SearchJSONStructure.self) { (response) in
-     if response.error == nil  {
-           callback(false, nil)
-         print(response.error)
-           return
-       }
-       guard let responseJSON = response.value else {
-           callback(false, nil)
-           print(response.value)
-           return
-       }
-       let recipes = Recipes.from(responseJSON)
-       callback(true, recipes)
- }
- */

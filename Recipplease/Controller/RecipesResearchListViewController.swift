@@ -11,7 +11,7 @@ class RecipesResearchListViewController: UIViewController, UITableViewDataSource
     
     @IBOutlet weak var recipesView: UITableView!
     
-    var recipes: Recipes? = nil
+    var recipes: [Recipe] = []
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -23,7 +23,7 @@ class RecipesResearchListViewController: UIViewController, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recipes!.numberOfSections
+        return recipes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -31,7 +31,11 @@ class RecipesResearchListViewController: UIViewController, UITableViewDataSource
             return UITableViewCell()
         }
         
-        cell.configure(name: recipes!.label[indexPath.row], time: recipes!.totalTime[indexPath.row], image: recipes!.image[indexPath.row], ingredients: recipes!.ingredients[indexPath.row], serve: recipes!.yield[indexPath.row])
+        cell.configure(name: recipes[indexPath.row].label,
+                       time: recipes[indexPath.row].totalTime,
+                       image: recipes[indexPath.row].cookImage,
+                       ingredients: recipes[indexPath.row].ingredient,
+                       serve: recipes[indexPath.row].yield)
         
         return cell
     }
@@ -41,8 +45,12 @@ class RecipesResearchListViewController: UIViewController, UITableViewDataSource
             guard let indexPath = recipesView.indexPathForSelectedRow?.row else {return}
             let desVC = segue.destination as! RecipesDetailsViewController
             desVC.whichSegue = true
-            desVC.recipesSearch = recipes
-            desVC.recipeIndex = indexPath
+            desVC.recipesSearch = recipes[indexPath]
         }
     }
 }
+
+/*
+ let recipe: Recipe = recipes[indexPath.row]
+ cell.configure(listedReciped: recipe)
+ */

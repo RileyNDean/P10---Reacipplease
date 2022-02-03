@@ -16,7 +16,7 @@ class SearchViewController: UIViewController {
     
     let manageIngredients = ManageIngredient()
     let errorManage = ErrorController()
-    var recipes: Recipes? = nil
+    var recipes: [Recipe] = []
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -44,7 +44,7 @@ class SearchViewController: UIViewController {
             self.toggleActivityIndicator(shown: false)
             if success {
                 if !research!.responseIsEmpty {
-                    self.recipes = research
+                    self.recipes = research!.recipesArray
                     self.performSegue(withIdentifier: "RecipesTable", sender: nil)
                 } else {
                     self.errorManage.presentAlertData(controller: self)

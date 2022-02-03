@@ -21,9 +21,8 @@ class RecipesDetailsViewController: UIViewController {
     
     let recipeDetails = RecipeDetails()
     var whichSegue = Bool()
-    var recipesSearch: Recipes? = nil
+    var recipesSearch: Recipe?
     var recipesFavorite: RecipesList?
-    var recipeIndex = Int()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -39,7 +38,9 @@ class RecipesDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        recipeDetails.configureRecipeDetails(whichSegue: whichSegue, recipeIndex: recipeIndex, recipeSearch: recipesSearch, recipeFavorite: recipesFavorite)
+        recipeDetails.configureRecipeDetails(whichSegue: whichSegue,
+                                             recipeSearch: recipesSearch,
+                                             recipeFavorite: recipesFavorite)
         haveDirections()
         alreadyFavorite()
         cookTime()

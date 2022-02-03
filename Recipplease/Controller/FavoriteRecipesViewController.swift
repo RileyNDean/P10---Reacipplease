@@ -61,7 +61,6 @@ class FavoriteRecipesViewController: UIViewController, UITableViewDataSource {
             guard let indexPath = favoriteTableView.indexPathForSelectedRow?.row else {return}
             let desVC = segue.destination as! RecipesDetailsViewController
             desVC.whichSegue = false
-            desVC.recipeIndex = indexPath
             desVC.recipesFavorite = self.recipesFavorite[indexPath]
         }
     }

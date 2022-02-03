@@ -19,16 +19,11 @@ final class RecipeDetails {
     
     var delegate: RecipesDetailsDelegate?
     private var directionsRecipes = String()
-    private var title = String()
-    private var image = String()
-    private var time = String()
-    private var ingredientsLines = String()
-    private var ingredients = String()
-    private var recipeIndex = Int()
     private var whichSegue = Bool()
-    private var recipe: RecipesList?
+    private var recipeByFavorite: RecipesList?
+    private var recipeBySearch: Recipe?
     private var uri = String()
-    private var yield = String()
+    
 
     private let coreDataStack: CoreDataStack
     
@@ -43,27 +38,25 @@ final class RecipeDetails {
 
 //setup the view with the informations
 extension RecipeDetails {
-    func configureRecipeDetails(whichSegue: Bool,recipeIndex: Int, recipeSearch: Recipes?, recipeFavorite: RecipesList?) {
+    func configureRecipeDetails(whichSegue: Bool, recipeSearch: Recipe?, recipeFavorite: RecipesList?) {
         print(whichSegue)
         if whichSegue {
-            directionsRecipes = (recipeSearch?.url[recipeIndex])!
-            ingredients = (recipeSearch?.ingredients[recipeIndex])!
-            image = (recipeSearch?.image[recipeIndex])!
-            title = (recipeSearch?.label[recipeIndex])!
-            time = (recipeSearch?.totalTime[recipeIndex])!
-            uri = (recipeSearch?.uri[recipeIndex])!
-            yield = (recipeSearch?.yield[recipeIndex])!
-            ingredientsLines = ingredientsList((recipeSearch?.ingredientsLines[recipeIndex])!)
-            delegate?.configureRecipeDetails(image: (recipeSearch?.image[recipeIndex])!, title: (recipeSearch?.label[recipeIndex])!, time: (recipeSearch?.totalTime[recipeIndex])!, ingredients: ingredientsList((recipeSearch?.ingredientsLines[recipeIndex])!), serve: (recipeSearch?.yield[recipeIndex])!)
+            self.recipeBySearch = recipeSearch
+            directionsRecipes = (recipeSearch!.cookUrl)
+            uri = recipeSearch!.cookUri
+            delegate?.configureRecipeDetails(image: recipeSearch!.cookImage,
+                                             title: recipeSearch!.label,
+                                             time: recipeSearch!.totalTime,
+                                             ingredients: recipeSearch!.ingredients,
+                                             serve: recipeSearch!.yield)
         } else {
-            self.recipe = recipeFavorite
-            directionsRecipes = (recipe?.urlRecipe)!
-            uri = (recipe?.uriRecipe)!
-            delegate?.configureRecipeDetails(image: recipe!.image!, title: recipe!.title!, time: recipe!.time!, ingredients: recipe!.ingredientsLines!, serve: recipe!.yield!)
+            self.recipeByFavorite = recipeFavorite
+            directionsRecipes = (recipeByFavorite?.urlRecipe)!
+            uri = (recipeByFavorite?.uriRecipe)!
+            delegate?.configureRecipeDetails(image: recipeByFavorite!.image!, title: recipeByFavorite!.title!, time: recipeByFavorite!.time!, ingredients: recipeByFavorite!.ingredientsLines!, serve: recipeByFavorite!.yield!)
             
         }
         self.whichSegue = whichSegue
-        self.recipeIndex = recipeIndex
     }
     
     private func ingredientsList(_ ingredients: [String]) -> String {
@@ -85,13 +78,13 @@ extension RecipeDetails {
     func addFavorite() {
         let recipe = RecipesList(context: coreDataStack.viewContext)
         let favorite = Favorite(context: coreDataStack.viewContext)
-        recipe.ingredientsLines = ingredientsLines
-        recipe.time = time
+        recipe.ingredientsLines = recipeBySearch!.ingredients
+        recipe.time = recipeBySearch!.totalTime
         recipe.urlRecipe = directionsRecipes
-        recipe.title = title
-        recipe.ingredients = ingredients
-        recipe.image = image
-        recipe.yield = yield
+        recipe.title = recipeBySearch!.label
+        recipe.ingredients = recipeBySearch!.ingredient
+        recipe.image = recipeBySearch!.cookImage
+        recipe.yield = recipeBySearch!.yield
         recipe.uriRecipe = uri
         favorite.isFavorite = true
         recipe.isFavorite = favorite

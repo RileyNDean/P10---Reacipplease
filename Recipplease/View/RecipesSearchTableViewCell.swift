@@ -30,6 +30,11 @@ class RecipesTableViewCell: UITableViewCell {
         
     }
     
+    func configure(listedReciped: ListedRecipe)
+    {
+        
+    }
+    
     private func printServe(serve: String) {
         if serve == "0" {
             serveIcon.isHidden = true
