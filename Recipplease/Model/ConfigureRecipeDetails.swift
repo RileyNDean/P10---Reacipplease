@@ -10,12 +10,11 @@ import Foundation
 struct ConfigureRecipeDetails {
     
     func intToStringYield(_ yield: Int) -> String {
-        if yield == 0 {
-            return "0"
-        } else {
+        if yield > 0 {
             let numberOfPeople = "Serve " + String(yield)
             return numberOfPeople
         }
+        return "0"
     }
     
      func minutesToHoursAndMinutes (_ minutes : Int) -> String {

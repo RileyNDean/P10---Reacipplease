@@ -49,8 +49,3 @@ class RecipesResearchListViewController: UIViewController, UITableViewDataSource
         }
     }
 }
-
-/*
- let recipe: Recipe = recipes[indexPath.row]
- cell.configure(listedReciped: recipe)
- */

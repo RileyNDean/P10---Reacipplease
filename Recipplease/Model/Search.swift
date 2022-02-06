@@ -12,15 +12,17 @@ final class Search {
     
     static var shared = Search()
     private init() {
-        self.searchSession = URLSession(configuration: .default)
+        self.session = Alamofire.Session(configuration: .default)
+    }
+    
+    init(session: Alamofire.Session) {
+        self.session = session
     }
     
     private var task: URLSessionDataTask?
-    private var searchSession: URLSession
     
-    init(searchSession: URLSession){
-        self.searchSession = searchSession
-    }
+    private var session: Alamofire.Session
+
 }
 
 extension Search {
@@ -29,19 +31,24 @@ extension Search {
         
         let researchURL = searchURL(ingredients: ingredients)
         
+        
         DispatchQueue.main.async {
-            AF.request(researchURL, method: .get).responseDecodable(of: SearchJSONStructure.self) { (response) in
-                if response.error != nil  {
-                      callback(false, nil)
-                      return
-                  }
-                  guard let responseJSON = response.value else {
-                      callback(false, nil)
-                      return
-                  }
-                let recipes = Recipes()
-                recipes.createRecipesArray(responseJSON)
-                  callback(true, recipes)
+            self.session.request(researchURL, method: .get).responseDecodable(of: SearchJSONStructure.self) { (response) in
+                switch response.result {
+                case .success(_):
+                    guard let responseJSON = response.value else {
+                        callback(false, nil)
+                        return
+                    }
+                    
+                  let recipes = Recipes()
+                  recipes.createRecipesArray(responseJSON)
+                    callback(true, recipes)
+                    
+                case .failure(_):
+                    callback(false, nil)
+                }
+
             }
         }
     }

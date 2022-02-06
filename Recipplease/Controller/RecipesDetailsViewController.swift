@@ -34,7 +34,10 @@ class RecipesDetailsViewController: UIViewController {
         recipeDetails.delegate = self
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        alreadyFavorite()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +45,6 @@ class RecipesDetailsViewController: UIViewController {
                                              recipeSearch: recipesSearch,
                                              recipeFavorite: recipesFavorite)
         haveDirections()
-        alreadyFavorite()
         cookTime()
         haveServe()
     }

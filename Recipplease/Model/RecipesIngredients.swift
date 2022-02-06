@@ -22,7 +22,7 @@ final class RecipeDetails {
     private var whichSegue = Bool()
     private var recipeByFavorite: RecipesList?
     private var recipeBySearch: Recipe?
-    private var uri = String()
+    var uri = String()
     
 
     private let coreDataStack: CoreDataStack
@@ -39,7 +39,6 @@ final class RecipeDetails {
 //setup the view with the informations
 extension RecipeDetails {
     func configureRecipeDetails(whichSegue: Bool, recipeSearch: Recipe?, recipeFavorite: RecipesList?) {
-        print(whichSegue)
         if whichSegue {
             self.recipeBySearch = recipeSearch
             directionsRecipes = (recipeSearch!.cookUrl)
@@ -59,7 +58,7 @@ extension RecipeDetails {
         self.whichSegue = whichSegue
     }
     
-    private func ingredientsList(_ ingredients: [String]) -> String {
+     private func ingredientsList(_ ingredients: [String]) -> String {
         var ingredientsList = ""
         for i in 0..<ingredients.count {
             ingredientsList = ingredientsList + "⊛ " + ingredients[i] + "\n"
@@ -73,7 +72,7 @@ extension RecipeDetails {
     }
 }
 
-// favorite ee
+// manage favorite 
 extension RecipeDetails {
     func addFavorite() {
         let recipe = RecipesList(context: coreDataStack.viewContext)

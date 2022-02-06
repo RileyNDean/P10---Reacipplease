@@ -29,6 +29,9 @@
 		5362289C27A850440042013C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 533EC8A12796B0C400A0CAB6 /* Main.storyboard */; };
 		5362289D27A8504E0042013C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 533EC8A92796B0C600A0CAB6 /* LaunchScreen.storyboard */; };
 		5362289E27A850520042013C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 533EC8A72796B0C600A0CAB6 /* Assets.xcassets */; };
+		536228A027AD5EEF0042013C /* Protocol +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5362289F27AD5EEE0042013C /* Protocol +.swift */; };
+		536228A227AD5F360042013C /* recipe.json in Resources */ = {isa = PBXBuildFile; fileRef = 536228A127AD5F360042013C /* recipe.json */; };
+		536228A427AFBEE20042013C /* FakeResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536228A327AFBEE20042013C /* FakeResponseData.swift */; };
 		538574C8279814EC006B8CF4 /* RecipesJSONResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538574C7279814EB006B8CF4 /* RecipesJSONResponse.swift */; };
 		538574CA279825D3006B8CF4 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538574C9279825D3006B8CF4 /* Search.swift */; };
 		538574CC2799BFF1006B8CF4 /* RecipesResearchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538574CB2799BFF1006B8CF4 /* RecipesResearchListViewController.swift */; };
@@ -151,6 +154,9 @@
 		5362285D27A6D5530042013C /* UIImageView +.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView +.swift"; sourceTree = "<group>"; };
 		5362285F27A6E48C0042013C /* ConfigureRecipeDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureRecipeDetails.swift; sourceTree = "<group>"; };
 		5362286327A83EED0042013C /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = SOURCE_ROOT; };
+		5362289F27AD5EEE0042013C /* Protocol +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Protocol +.swift"; sourceTree = "<group>"; };
+		536228A127AD5F360042013C /* recipe.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = recipe.json; sourceTree = "<group>"; };
+		536228A327AFBEE20042013C /* FakeResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseData.swift; sourceTree = "<group>"; };
 		538574C7279814EB006B8CF4 /* RecipesJSONResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesJSONResponse.swift; sourceTree = "<group>"; };
 		538574C9279825D3006B8CF4 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		538574CB2799BFF1006B8CF4 /* RecipesResearchListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesResearchListViewController.swift; sourceTree = "<group>"; };
@@ -224,6 +230,9 @@
 			isa = PBXGroup;
 			children = (
 				533EC8B52796B0C600A0CAB6 /* RecippleaseTests.swift */,
+				5362289F27AD5EEE0042013C /* Protocol +.swift */,
+				536228A127AD5F360042013C /* recipe.json */,
+				536228A327AFBEE20042013C /* FakeResponseData.swift */,
 			);
 			path = RecippleaseTests;
 			sourceTree = "<group>";
@@ -491,6 +500,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				536228A227AD5F360042013C /* recipe.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,7 +546,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				536228A027AD5EEF0042013C /* Protocol +.swift in Sources */,
 				533EC8B62796B0C600A0CAB6 /* RecippleaseTests.swift in Sources */,
+				536228A427AFBEE20042013C /* FakeResponseData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
