@@ -11,7 +11,7 @@ struct ConfigureRecipeDetails {
     
     func intToStringYield(_ yield: Int) -> String {
         if yield > 0 {
-            let numberOfPeople = "Serve " + String(yield)
+            let numberOfPeople = "Parts " + String(yield)
             return numberOfPeople
         }
         return "0"

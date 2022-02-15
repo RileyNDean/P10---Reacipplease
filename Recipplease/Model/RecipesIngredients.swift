@@ -11,8 +11,6 @@ import CoreData
 
 protocol RecipesDetailsDelegate: NSObject {
     func configureRecipeDetails(image: String, title: String, time: String, ingredients: String, serve: String)
-    func openDirectionsURL(directions: URL)
- 
 }
 
 final class RecipeDetails {
@@ -38,37 +36,15 @@ final class RecipeDetails {
 
 //setup the view with the informations
 extension RecipeDetails {
-    func configureRecipeDetails(whichSegue: Bool, recipeSearch: Recipe?, recipeFavorite: RecipesList?) {
-        if whichSegue {
+    func configureRecipeDetails(recipeSearch: Recipe?) {
             self.recipeBySearch = recipeSearch
             directionsRecipes = (recipeSearch!.cookUrl)
             uri = recipeSearch!.cookUri
             delegate?.configureRecipeDetails(image: recipeSearch!.cookImage,
                                              title: recipeSearch!.label,
                                              time: recipeSearch!.totalTime,
-                                             ingredients: recipeSearch!.ingredients,
+                                             ingredients: recipeSearch!.ingredientsLines,
                                              serve: recipeSearch!.yield)
-        } else {
-            self.recipeByFavorite = recipeFavorite
-            directionsRecipes = (recipeByFavorite?.urlRecipe)!
-            uri = (recipeByFavorite?.uriRecipe)!
-            delegate?.configureRecipeDetails(image: recipeByFavorite!.image!, title: recipeByFavorite!.title!, time: recipeByFavorite!.time!, ingredients: recipeByFavorite!.ingredientsLines!, serve: recipeByFavorite!.yield!)
-            
-        }
-        self.whichSegue = whichSegue
-    }
-    
-     private func ingredientsList(_ ingredients: [String]) -> String {
-        var ingredientsList = ""
-        for i in 0..<ingredients.count {
-            ingredientsList = ingredientsList + "⊛ " + ingredients[i] + "\n"
-        }
-        return ingredientsList
-    }
-    
-    func openDirectionsURL() {
-        guard let url = URL(string: directionsRecipes) else {return}
-        delegate?.openDirectionsURL(directions: url)
     }
 }
 
@@ -77,7 +53,7 @@ extension RecipeDetails {
     func addFavorite() {
         let recipe = RecipesList(context: coreDataStack.viewContext)
         let favorite = Favorite(context: coreDataStack.viewContext)
-        recipe.ingredientsLines = recipeBySearch!.ingredients
+        recipe.ingredientsLines = recipeBySearch!.cookIngredientsLines
         recipe.time = recipeBySearch!.totalTime
         recipe.urlRecipe = directionsRecipes
         recipe.title = recipeBySearch!.label

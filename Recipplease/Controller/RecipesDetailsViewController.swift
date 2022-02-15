@@ -20,9 +20,7 @@ class RecipesDetailsViewController: UIViewController {
     @IBOutlet weak var ingredientsLines: UITextView!
     
     let recipeDetails = RecipeDetails()
-    var whichSegue = Bool()
-    var recipesSearch: Recipe?
-    var recipesFavorite: RecipesList?
+    var recipes: Recipe?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -41,18 +39,18 @@ class RecipesDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        recipeDetails.configureRecipeDetails(whichSegue: whichSegue,
-                                             recipeSearch: recipesSearch,
-                                             recipeFavorite: recipesFavorite)
+        recipeDetails.configureRecipeDetails(recipeSearch: recipes)
         haveDirections()
         cookTime()
         haveServe()
     }
 
+    //MARK: go to the navigator 
     @IBAction func getDirections(_ sender: Any) {
-        recipeDetails.openDirectionsURL()
+        UIApplication.shared.open(URL(string: recipes!.url)!, options: [:], completionHandler: nil)
     }
     
+    //MARK: adding a recipe to the favorite
     @IBAction func addFavorite(_ sender: Any) {
         if recipeDetails.isAlreadyFavorite() {
             addFavoriteButton.tintColor = .systemBlue
@@ -65,6 +63,7 @@ class RecipesDetailsViewController: UIViewController {
         
     }
     
+    //MARK: hide serve if have no serve
     func haveServe() {
         if serveLabel.text == "0" {
             serveLabel.isHidden = true
@@ -72,6 +71,7 @@ class RecipesDetailsViewController: UIViewController {
         }
     }
     
+    //MARK: hide cooktime if have no time
     func cookTime() {
         if recipeTime.text == "" {
             recipeTime.isHidden = true
@@ -79,12 +79,14 @@ class RecipesDetailsViewController: UIViewController {
         }
     }
 
+    //MARK: Know if the recipe is already in favorite for the search
     func alreadyFavorite() {
         if recipeDetails.isAlreadyFavorite() {
             addFavoriteButton.tintColor = .yellow
         }
     }
     
+    //MARK: Hide get direction button if have no directions
     func haveDirections() {
         if !recipeDetails.havedirections {
             directionsButton.isHidden = true
@@ -93,11 +95,6 @@ class RecipesDetailsViewController: UIViewController {
 }
 
 extension RecipesDetailsViewController: RecipesDetailsDelegate {
-    
-    func openDirectionsURL(directions: URL) {
-            UIApplication.shared.open(URL(string: "\(directions)")!)
-    }
-    
     func configureRecipeDetails(image: String, title: String, time: String, ingredients: String, serve: String) {
         recipeImage.downloaded(from: image)
       recipeTime.text = time

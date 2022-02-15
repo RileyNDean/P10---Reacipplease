@@ -64,10 +64,12 @@ class SearchViewController: UIViewController {
         ingredient.resignFirstResponder()
     }
     
+    
     @IBAction func clearIngredientList(_ sender: UIButton) {
         manageIngredients.cleanIngredients()
     }
     
+    //MARK: look if the ingredients list is empty before launch the research
     @IBAction func searchRecip(_ sender: UIButton) {
         if manageIngredients.ingredients.isEmpty
         {
@@ -79,6 +81,7 @@ class SearchViewController: UIViewController {
         }
     }
     
+    //MARK: Segue configuration
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "RecipesTable" {
             if let vc = segue.destination as? RecipesResearchListViewController

@@ -19,8 +19,6 @@ final class Search {
         self.session = session
     }
     
-    private var task: URLSessionDataTask?
-    
     private var session: Alamofire.Session
 
 }
@@ -30,25 +28,20 @@ extension Search {
     func getRecipesResearch(for ingredients: [String], callback: @escaping (Bool, Recipes?) -> Void) {
         
         let researchURL = searchURL(ingredients: ingredients)
-        
-        
-        DispatchQueue.main.async {
-            self.session.request(researchURL, method: .get).responseDecodable(of: SearchJSONStructure.self) { (response) in
-                switch response.result {
-                case .success(_):
-                    guard let responseJSON = response.value else {
-                        callback(false, nil)
-                        return
-                    }
-                    
-                  let recipes = Recipes()
-                  recipes.createRecipesArray(responseJSON)
-                    callback(true, recipes)
-                    
-                case .failure(_):
+        self.session.request(researchURL, method: .get).responseDecodable(of: SearchJSONStructure.self) { (response) in
+            switch response.result {
+            case .success(_):
+                guard let responseJSON = response.value else {
                     callback(false, nil)
+                    return
                 }
-
+                
+              let recipes = Recipes()
+              recipes.createRecipesArray(responseJSON)
+                callback(true, recipes)
+                
+            case .failure(_):
+                callback(false, nil)
             }
         }
     }
